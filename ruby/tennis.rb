@@ -10,22 +10,32 @@ class TennisGame1
   end
 
   def score
-    if player1_score == player2_score
-      player1_score > 2 ? 'Deuce' : "#{score_text(player1_score)}-All"
-    elsif player1_score < 4 && player2_score < 4
-      "#{score_text(player1_score)}-#{score_text(player2_score)}"
-    else
-      points_difference = player1_score - player2_score
-      player_name = points_difference > 0 ? player1_name : player2_name
-      if points_difference.abs == 1
-        "Advantage #{player_name}"
-      else
-        "Win for #{player_name}"
-      end
-    end
+    same_score_message || beginning_of_game_message || advantage_or_win_message
   end
 
   private
+
+  def same_score_message
+    if player1_score == player2_score
+      player1_score > 2 ? 'Deuce' : "#{score_text(player1_score)}-All"
+    end
+  end
+
+  def beginning_of_game_message
+    if player1_score < 4 && player2_score < 4
+      "#{score_text(player1_score)}-#{score_text(player2_score)}"
+    end
+  end
+
+  def advantage_or_win_message
+    points_difference = player1_score - player2_score
+    player_name = points_difference > 0 ? player1_name : player2_name
+    if points_difference.abs == 1
+      "Advantage #{player_name}"
+    else
+      "Win for #{player_name}"
+    end
+  end
 
   def player1_name
     @players.keys.first
