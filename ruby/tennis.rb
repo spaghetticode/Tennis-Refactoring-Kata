@@ -22,15 +22,12 @@ class TennisGame1
     elsif @p1points < 4 && @p2points < 4
       "#{score_text(@p1points)}-#{score_text(@p2points)}"
     else
-      minusResult = @p1points - @p2points
-      if minusResult == 1
-        "Advantage #{@player1Name}"
-      elsif minusResult == -1
-        "Advantage #{@player2Name}"
-      elsif minusResult >= 2
-        "Win for #{@player1Name}"
+      points_difference = @p1points - @p2points
+      player_name = points_difference > 0 ? @player1Name : @player2Name
+      if points_difference.abs == 1
+        "Advantage #{player_name}"
       else
-        "Win for #{@player2Name}"
+        "Win for #{player_name}"
       end
     end
   end
