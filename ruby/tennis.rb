@@ -19,7 +19,9 @@ class TennisGame1
   def score
     if @p1points == @p2points
       @p1points > 2 ? 'Deuce' : "#{score_text(@p1points)}-All"
-    elsif (@p1points >= 4) || (@p2points >= 4)
+    elsif @p1points < 4 && @p2points < 4
+      "#{score_text(@p1points)}-#{score_text(@p2points)}"
+    else
       minusResult = @p1points - @p2points
       if minusResult == 1
         "Advantage #{@player1Name}"
@@ -30,8 +32,6 @@ class TennisGame1
       else
         "Win for #{@player2Name}"
       end
-    else
-      "#{score_text(@p1points)}-#{score_text(@p2points)}"
     end
   end
 
