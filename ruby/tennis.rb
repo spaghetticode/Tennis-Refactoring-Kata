@@ -19,11 +19,7 @@ class TennisGame1
   def score
     tempScore = 0
     if @p1points == @p2points
-      if @p1points > 2
-        'Deuce'
-      else
-        "#{score_text(@p1points)}-All"
-      end
+      @p1points > 2 ? 'Deuce' : "#{score_text(@p1points)}-All"
     elsif (@p1points >= 4) || (@p2points >= 4)
       minusResult = @p1points - @p2points
       if minusResult == 1
