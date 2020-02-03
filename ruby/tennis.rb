@@ -17,7 +17,6 @@ class TennisGame1
   end
 
   def score
-    tempScore = 0
     if @p1points == @p2points
       @p1points > 2 ? 'Deuce' : "#{score_text(@p1points)}-All"
     elsif (@p1points >= 4) || (@p2points >= 4)
@@ -32,17 +31,7 @@ class TennisGame1
         "Win for #{@player2Name}"
       end
     else
-      result = ''
-      (1...3).each do |i|
-        if i == 1
-          tempScore = @p1points
-        else
-          result += '-'
-          tempScore = @p2points
-        end
-        result += score_text(tempScore)
-      end
-      result
+      "#{score_text(@p1points)}-#{score_text(@p2points)}"
     end
   end
 
