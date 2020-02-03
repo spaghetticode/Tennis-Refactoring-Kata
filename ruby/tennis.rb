@@ -19,11 +19,11 @@ class TennisGame1
   def score
     tempScore = 0
     if @p1points == @p2points
-      {
-        0 => 'Love-All',
-        1 => 'Fifteen-All',
-        2 => 'Thirty-All'
-      }.fetch(@p1points, 'Deuce')
+      if @p1points > 2
+        'Deuce'
+      else
+        "#{score_text(@p1points)}-All"
+      end
     elsif (@p1points >= 4) || (@p2points >= 4)
       minusResult = @p1points - @p2points
       if minusResult == 1
@@ -44,15 +44,21 @@ class TennisGame1
           result += '-'
           tempScore = @p2points
         end
-        result += {
-          0 => 'Love',
-          1 => 'Fifteen',
-          2 => 'Thirty',
-          3 => 'Forty'
-        }[tempScore]
+        result += score_text(tempScore)
       end
       result
     end
+  end
+
+  private
+
+  def score_text(score)
+    {
+      0 => 'Love',
+      1 => 'Fifteen',
+      2 => 'Thirty',
+      3 => 'Forty'
+    }[score]
   end
 end
 
