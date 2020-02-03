@@ -2,28 +2,21 @@
 
 class TennisGame1
   def initialize(player1Name, player2Name)
-    @player1Name = player1Name
-    @player2Name = player2Name
-    @p1points = 0
-    @p2points = 0
+    @players = { player1Name => 0, player2Name => 0 }
   end
 
   def won_point(playerName)
-    if playerName == @player1Name
-      @p1points += 1
-    else
-      @p2points += 1
-    end
+    @players[playerName] += 1
   end
 
   def score
-    if @p1points == @p2points
-      @p1points > 2 ? 'Deuce' : "#{score_text(@p1points)}-All"
-    elsif @p1points < 4 && @p2points < 4
-      "#{score_text(@p1points)}-#{score_text(@p2points)}"
+    if player1_score == player2_score
+      player1_score > 2 ? 'Deuce' : "#{score_text(player1_score)}-All"
+    elsif player1_score < 4 && player2_score < 4
+      "#{score_text(player1_score)}-#{score_text(player2_score)}"
     else
-      points_difference = @p1points - @p2points
-      player_name = points_difference > 0 ? @player1Name : @player2Name
+      points_difference = player1_score - player2_score
+      player_name = points_difference > 0 ? player1_name : player2_name
       if points_difference.abs == 1
         "Advantage #{player_name}"
       else
@@ -33,6 +26,23 @@ class TennisGame1
   end
 
   private
+
+  def player1_name
+    @players.keys.first
+  end
+
+  def player1_score
+    @players.values.first
+  end
+
+  def player2_name
+    @players.keys.last
+  end
+
+  def player2_score
+    @players.values.last
+  end
+
 
   def score_text(score)
     {
