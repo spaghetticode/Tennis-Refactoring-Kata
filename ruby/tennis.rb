@@ -29,7 +29,6 @@ class TennisGame1
 
   def advantage_or_win_message
     if !same_score? && (player1_score >= 4 || player2_score >= 4)
-      points_difference = player1_score - player2_score
       player_name = points_difference > 0 ? player1_name : player2_name
       if points_difference.abs == 1
         "Advantage #{player_name}"
@@ -37,6 +36,10 @@ class TennisGame1
         "Win for #{player_name}"
       end
     end
+  end
+
+  def points_difference
+    player1_score - player2_score
   end
 
   def same_score?
