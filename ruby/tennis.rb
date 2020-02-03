@@ -28,13 +28,13 @@ class TennisGame1
     elsif (@p1points >= 4) || (@p2points >= 4)
       minusResult = @p1points - @p2points
       result = if minusResult == 1
-                 'Advantage player1'
+                 "Advantage #{@player1Name}"
                elsif minusResult == -1
-                 'Advantage player2'
+                 "Advantage #{@player2Name}"
                elsif minusResult >= 2
-                 'Win for player1'
+                 "Win for #{@player1Name}"
                else
-                 'Win for player2'
+                 "Win for #{@player2Name}"
                end
     else
       (1...3).each do |i|
