@@ -17,26 +17,26 @@ class TennisGame1
   end
 
   def score
-    result = ''
     tempScore = 0
     if @p1points == @p2points
-      result = {
+      {
         0 => 'Love-All',
         1 => 'Fifteen-All',
         2 => 'Thirty-All'
       }.fetch(@p1points, 'Deuce')
     elsif (@p1points >= 4) || (@p2points >= 4)
       minusResult = @p1points - @p2points
-      result = if minusResult == 1
-                 "Advantage #{@player1Name}"
-               elsif minusResult == -1
-                 "Advantage #{@player2Name}"
-               elsif minusResult >= 2
-                 "Win for #{@player1Name}"
-               else
-                 "Win for #{@player2Name}"
-               end
+      if minusResult == 1
+        "Advantage #{@player1Name}"
+      elsif minusResult == -1
+        "Advantage #{@player2Name}"
+      elsif minusResult >= 2
+        "Win for #{@player1Name}"
+      else
+        "Win for #{@player2Name}"
+      end
     else
+      result = ''
       (1...3).each do |i|
         if i == 1
           tempScore = @p1points
@@ -51,8 +51,8 @@ class TennisGame1
           3 => 'Forty'
         }[tempScore]
       end
+      result
     end
-    result
   end
 end
 
