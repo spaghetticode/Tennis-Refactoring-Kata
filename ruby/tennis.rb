@@ -16,25 +16,31 @@ class TennisGame1
   private
 
   def same_score_message
-    if player1_score == player2_score
+    if same_score?
       player1_score > 2 ? 'Deuce' : "#{score_text(player1_score)}-All"
     end
   end
 
   def beginning_of_game_message
-    if player1_score < 4 && player2_score < 4
+    if !same_score? && player1_score < 4 && player2_score < 4
       "#{score_text(player1_score)}-#{score_text(player2_score)}"
     end
   end
 
   def advantage_or_win_message
-    points_difference = player1_score - player2_score
-    player_name = points_difference > 0 ? player1_name : player2_name
-    if points_difference.abs == 1
-      "Advantage #{player_name}"
-    else
-      "Win for #{player_name}"
+    if !same_score? && (player1_score >= 4 || player2_score >= 4)
+      points_difference = player1_score - player2_score
+      player_name = points_difference > 0 ? player1_name : player2_name
+      if points_difference.abs == 1
+        "Advantage #{player_name}"
+      else
+        "Win for #{player_name}"
+      end
     end
+  end
+
+  def same_score?
+    player1_score == player2_score
   end
 
   def player1_name
