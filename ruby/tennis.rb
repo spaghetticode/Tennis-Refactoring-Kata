@@ -90,13 +90,16 @@ class TennisGame2
   end
 
   def score
-    if (@p1points == @p2points) && (@p1points < 3)
-      result = 'Love' if @p1points == 0
-      result = 'Fifteen' if @p1points == 1
-      result = 'Thirty' if @p1points == 2
-      result += '-All'
+    if @p1points == @p2points
+      if @p1points > 2
+        result = 'Deuce'
+      else
+        result = 'Love' if @p1points == 0
+        result = 'Fifteen' if @p1points == 1
+        result = 'Thirty' if @p1points == 2
+        result += '-All'
+      end
     end
-    result = 'Deuce' if (@p1points == @p2points) && (@p1points > 2)
 
     p1res = ''
     p2res = ''
