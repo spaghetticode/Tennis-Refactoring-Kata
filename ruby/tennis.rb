@@ -97,9 +97,9 @@ class TennisGame2
         "#{score_text(@p1points)}-All"
       end
     else
-      result = score_text(@p1points) + '-' + score_text(@p2points)
-
-      if @p1points >= 4 || @p2points >= 4
+      if @p1points < 4 && @p2points < 4
+        result = score_text(@p1points) + '-' + score_text(@p2points)
+      else
         if (@p1points > @p2points) && (@p2points >= 3)
           result = 'Advantage ' + @player1Name
         end
