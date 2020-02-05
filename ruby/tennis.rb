@@ -94,9 +94,7 @@ class TennisGame2
       if @p1points > 2
         result = 'Deuce'
       else
-        result = 'Love' if @p1points == 0
-        result = 'Fifteen' if @p1points == 1
-        result = 'Thirty' if @p1points == 2
+        result = score_text(@p1points)
         result += '-All'
       end
     end
@@ -104,33 +102,24 @@ class TennisGame2
     p1res = ''
     p2res = ''
     if (@p1points > 0) && (@p2points == 0)
-      p1res = 'Fifteen' if @p1points == 1
-      p1res = 'Thirty' if @p1points == 2
-      p1res = 'Forty' if @p1points == 3
-      p2res = 'Love'
+      p1res = score_text(@p1points)
+      p2res = score_text(@p2points)
       result = p1res + '-' + p2res
     end
     if (@p2points > 0) && (@p1points == 0)
-      p2res = 'Fifteen' if @p2points == 1
-      p2res = 'Thirty' if @p2points == 2
-      p2res = 'Forty' if @p2points == 3
-
-      p1res = 'Love'
+      p1res = score_text(@p1points)
+      p2res = score_text(@p2points)
       result = p1res + '-' + p2res
     end
 
     if (@p1points > @p2points) && (@p1points < 4)
-      p1res = 'Thirty' if @p1points == 2
-      p1res = 'Forty' if @p1points == 3
-      p2res = 'Fifteen' if @p2points == 1
-      p2res = 'Thirty' if @p2points == 2
+      p1res = score_text(@p1points)
+      p2res = score_text(@p2points)
       result = p1res + '-' + p2res
     end
     if (@p2points > @p1points) && (@p2points < 4)
-      p2res = 'Thirty' if @p2points == 2
-      p2res = 'Forty' if @p2points == 3
-      p1res = 'Fifteen' if @p1points == 1
-      p1res = 'Thirty' if @p1points == 2
+      p1res = score_text(@p1points)
+      p2res = score_text(@p2points)
       result = p1res + '-' + p2res
     end
     if (@p1points > @p2points) && (@p2points >= 3)
