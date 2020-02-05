@@ -83,9 +83,9 @@ class TennisGame2
 
   def won_point(playerName)
     if playerName == @player1Name
-      p1Score
+      @p1points += 1
     else
-      p2Score
+      @p2points += 1
     end
   end
 
@@ -144,14 +144,6 @@ class TennisGame2
       result = 'Win for ' + @player2Name
     end
     result
-  end
-
-  def p1Score
-    @p1points += 1
-  end
-
-  def p2Score
-    @p2points += 1
   end
 end
 
