@@ -97,29 +97,8 @@ class TennisGame2
         "#{score_text(@p1points)}-All"
       end
     else
-      p1res = ''
-      p2res = ''
-      if (@p1points > 0) && (@p2points == 0)
-        p1res = score_text(@p1points)
-        p2res = score_text(@p2points)
-        result = p1res + '-' + p2res
-      end
-      if (@p2points > 0) && (@p1points == 0)
-        p1res = score_text(@p1points)
-        p2res = score_text(@p2points)
-        result = p1res + '-' + p2res
-      end
+      result = score_text(@p1points) + '-' + score_text(@p2points)
 
-      if (@p1points > @p2points) && (@p1points < 4)
-        p1res = score_text(@p1points)
-        p2res = score_text(@p2points)
-        result = p1res + '-' + p2res
-      end
-      if (@p2points > @p1points) && (@p2points < 4)
-        p1res = score_text(@p1points)
-        p2res = score_text(@p2points)
-        result = p1res + '-' + p2res
-      end
       if (@p1points > @p2points) && (@p2points >= 3)
         result = 'Advantage ' + @player1Name
       end
