@@ -147,6 +147,19 @@ class TennisGame2
     end
     result
   end
+
+  private
+
+  def score_text(points)
+    case points
+    when 0 then 'Love'
+    when 1 then 'Fifteen'
+    when 2 then 'Thirty'
+    when 3 then 'Forty'
+    else
+      ''
+    end
+  end
 end
 
 class TennisGame3
