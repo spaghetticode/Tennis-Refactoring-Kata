@@ -90,7 +90,6 @@ class TennisGame2
   end
 
   def score
-    result = ''
     if (@p1points == @p2points) && (@p1points < 3)
       result = 'Love' if @p1points == 0
       result = 'Fifteen' if @p1points == 1
