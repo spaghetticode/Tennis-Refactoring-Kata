@@ -99,17 +99,19 @@ class TennisGame2
     else
       result = score_text(@p1points) + '-' + score_text(@p2points)
 
-      if (@p1points > @p2points) && (@p2points >= 3)
-        result = 'Advantage ' + @player1Name
-      end
-      if (@p2points > @p1points) && (@p1points >= 3)
-        result = 'Advantage ' + @player2Name
-      end
-      if @p1points >= 4 && (@p1points - @p2points) >= 2
-        result = 'Win for ' + @player1Name
-      end
-      if @p2points >= 4 && (@p2points - @p1points) >= 2
-        result = 'Win for ' + @player2Name
+      if @p1points >= 4 || @p2points >= 4
+        if (@p1points > @p2points) && (@p2points >= 3)
+          result = 'Advantage ' + @player1Name
+        end
+        if (@p2points > @p1points) && (@p1points >= 3)
+          result = 'Advantage ' + @player2Name
+        end
+        if (@p1points - @p2points) >= 2
+          result = 'Win for ' + @player1Name
+        end
+        if (@p2points - @p1points) >= 2
+          result = 'Win for ' + @player2Name
+        end
       end
       result
     end
