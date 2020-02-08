@@ -130,31 +130,31 @@ end
 
 class TennisGame3
   def initialize(player1Name, player2Name)
-    @p1N = player1Name
-    @p2N = player2Name
-    @p1 = 0
-    @p2 = 0
+    @p1Name = player1Name
+    @p2Name = player2Name
+    @p1Points = 0
+    @p2Points = 0
   end
 
   def won_point(n)
-    if n == @p1N
-      @p1 += 1
+    if n == @p1Name
+      @p1Points += 1
     else
-      @p2 += 1
+      @p2Points += 1
     end
   end
 
   def score
-    if ((@p1 < 4) && (@p2 < 4)) && (@p1 + @p2 < 6)
+    if ((@p1Points < 4) && (@p2Points < 4)) && (@p1Points + @p2Points < 6)
       p = %w[Love Fifteen Thirty Forty]
-      s = p[@p1]
-      @p1 == @p2 ? s + '-All' : s + '-' + p[@p2]
+      s = p[@p1Points]
+      @p1Points == @p2Points ? s + '-All' : s + '-' + p[@p2Points]
     else
-      if @p1 == @p2
+      if @p1Points == @p2Points
         'Deuce'
       else
-        s = @p1 > @p2 ? @p1N : @p2N
-        (@p1 - @p2) * (@p1 - @p2) == 1 ? 'Advantage ' + s : 'Win for ' + s
+        s = @p1Points > @p2Points ? @p1Name : @p2Name
+        (@p1Points - @p2Points) * (@p1Points - @p2Points) == 1 ? 'Advantage ' + s : 'Win for ' + s
       end
     end
   end
