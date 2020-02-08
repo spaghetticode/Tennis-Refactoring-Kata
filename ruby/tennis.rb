@@ -146,9 +146,7 @@ class TennisGame3
 
   def score
     if ((@p1Points < 4) && (@p2Points < 4)) && (@p1Points + @p2Points < 6)
-      scores = %w[Love Fifteen Thirty Forty]
-      score = scores[@p1Points]
-      @p1Points == @p2Points ? score + '-All' : score + '-' + scores[@p2Points]
+      @p1Points == @p2Points ? text(@p1Points) + '-All' : text(@p1Points) + '-' + text(@p2Points)
     else
       if @p1Points == @p2Points
         'Deuce'
@@ -157,5 +155,11 @@ class TennisGame3
         (@p1Points - @p2Points) * (@p1Points - @p2Points) == 1 ? 'Advantage ' + name : 'Win for ' + name
       end
     end
+  end
+
+  private
+
+  def text(points)
+  %w[Love Fifteen Thirty Forty][points]
   end
 end
