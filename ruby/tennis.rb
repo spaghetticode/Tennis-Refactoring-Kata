@@ -145,7 +145,7 @@ class TennisGame3
   end
 
   def score
-    if ((@p1Points < 4) && (@p2Points < 4)) && (@p1Points + @p2Points < 6)
+    if (@p1Points < 4 && @p2Points < 4) && @p1Points + @p2Points < 6
       @p1Points == @p2Points ? text(@p1Points) + '-All' : text(@p1Points) + '-' + text(@p2Points)
     else
       if @p1Points == @p2Points
